@@ -47,6 +47,7 @@ page {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 32rpx;
 }
 
 .card-line text {
@@ -79,6 +80,10 @@ page {
   border-radius:28rpx;
   display: flex;
   align-items: center;
+}
+
+.card-title__btn:active{
+  background:rgba(136,188,157,.8);
 }
 
 .card-title__btn > image {
@@ -123,6 +128,10 @@ page {
   width: 150rpx;
   align-items: center;
   float: right;
+}
+
+.pwd-setting:active {
+  transform: scale(1.02);
 }
 
 .pwd-setting > image {
@@ -180,7 +189,7 @@ page {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 auto 60rpx auto;
+  margin: 0 auto 40rpx auto;
 }
 
 .pwd-slider {

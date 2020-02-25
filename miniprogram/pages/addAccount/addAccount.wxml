@@ -10,18 +10,18 @@
 <scroll-view enable-flex="{{true}}"	scroll-y="{{true}}" class="scroll-view" style="height:{{viewHeight}}px;">
   <view class="card">
     <text class="card-title">描述</text>
-    <x-input placeholder="给存储信息取个名字？" bind:inputChange="titleChange"></x-input>
+    <x-input placeholder="给存储信息取个名字？" tag="title" inputValue="{{title}}" bind:inputChange="onInputChange"></x-input>
   </view>
 
   <view class="card">
     <view class="card-title-box">
-      <input class="card-title-edit" maxlength="4" value="{{userKey}}"></input>
-      <view class="card-title__btn">
+      <input class="card-title-edit" data-tag="userKey" bindinput="onDataSet" bindblur="onUserTitleBlur" maxlength="4" value="{{userKey}}" focus="{{userTitleFocus}}"></input>
+      <view class="card-title__btn" catchtap="onUpdateUserTitle">
         <image src="./../../images/account-edit.png" />
         <text>更改名称</text>
       </view>
     </view>
-    <x-input placeholder="请输入用户名/账号/卡号等" bind:inputChange="userChange"></x-input>
+    <x-input placeholder="请输入用户名/账号/卡号等" tag="account" inputValue="{{account}}" bind:inputChange="onInputChange"></x-input>
   </view>
 
   <view class="card" style="padding-bottom:0;">
@@ -32,49 +32,49 @@
         <text>生成复制</text>
       </view>
     </view>
-    <x-input placeholder="请输入" bind:inputChange="userChange"></x-input>
-    <view class="pwd-setting">
+    <x-input placeholder="请输入" tag="password" inputValue="{{password}}" bind:inputChange="onInputChange"></x-input>
+    <view class="pwd-setting" catchtap="onPwdSetting">
       <image src="./../../images/account-setting.png" />
       <text>规则偏好</text>
     </view>
   </view>
 
-  <view class="pwd">
+  <view class="pwd animated fadeIn" wx:if="{{pwdSetting}}">
     <checkbox-group class="checkbox-group" bindchange="pwdSettingChange">
-      <label class="checkbox" wx:for="{{pwdItems}}">
+      <label class="checkbox" wx:for="{{pwdItems}}" wx:key="index">
         <checkbox value="{{item.value}}" checked="{{item.checked}}"/>{{item.value}}
       </label>
     </checkbox-group>
     <view class="pwd-len">
       <view class="pwd-slider">
         <view class="slider-activeBg"></view>
-        <slider min="4" max="32" value="12" activeColor="#88BC9D" backgroundColor="#88BC9D" block-size="20" />
+        <slider data-tag="passwordLen" bindchanging="onDataSet" bindchange="onDataSet" min="4" max="32" value="{{passwordLen}}" activeColor="#88BC9D" backgroundColor="#88BC9D" block-size="20" />
       </view>
-      <text class="pwd-text">16位</text>
+      <text class="pwd-text">{{passwordLen}}位</text>
     </view>
   </view>
 
   <view class="card-line">
     <text>更多选项（选填）</text>
-    <switch checked="{{moreOptions}}" bindchange="switchOptions" color="#88BC9D" />
+    <switch checked="{{moreOptions}}" data-tag="moreOptionsShow" bindchange="onDataSet" color="#88BC9D" />
   </view>
 
-  <block>
+  <block wx:if="{{moreOptionsShow}}">
     <view class="card">
       <text class="card-title">链接/平台</text>
-      <x-input placeholder="请输入" bind:inputChange="titleChange"></x-input>
+      <x-input tag="platform" inputValue="{{platform}}" bind:inputChange="onInputChange" placeholder="请输入"></x-input>
     </view>
     <view class="card">
       <text class="card-title">手机</text>
-      <x-input placeholder="请输入" bind:inputChange="titleChange"></x-input>
+      <x-input placeholder="请输入" tag="phone" inputValue="{{phone}}" bind:inputChange="onInputChange"></x-input>
     </view>
     <view class="card">
       <text class="card-title">邮箱</text>
-      <x-input placeholder="请输入" bind:inputChange="titleChange"></x-input>
+      <x-input placeholder="请输入" tag="mail" inputValue="{{mail}}" bind:inputChange="onInputChange"></x-input>
     </view>
     <view class="card">
       <text class="card-title">备注</text>
-      <textarea cursor-spacing="72" class="textarea" placeholder-class="textarea-placeholder" placeholder="自由填写" maxlength="-1" />
+      <textarea data-tag="desc" bindinput="onDataSet" value="{{desc}}" cursor-spacing="72" class="textarea" placeholder-class="textarea-placeholder" placeholder="自由填写" maxlength="-1" />
     </view>
   </block>
 

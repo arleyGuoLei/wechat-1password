@@ -15,6 +15,10 @@ Component({
     cursorSpacing: {
       type: Number,
       value: 84
+    },
+    tag: {
+      type: String,
+      value: ''
     }
   },
   data: {
@@ -23,7 +27,8 @@ Component({
   methods: {
     inputContent(e) {
       const { detail: { value } } = e
-      this.triggerEvent('inputChange', { value })
+      const { properties: { tag } } = this
+      this.triggerEvent('inputChange', { value, tag })
       if (value !== '') {
         this.setData({ placeholderValue: '' })
       } else {
@@ -31,8 +36,10 @@ Component({
       }
     },
     init() {
-      const { properties: { placeholder } } = this
-      this.setData({ placeholderValue: placeholder })
+      const { properties: { placeholder, inputValue: value } } = this
+      if (typeof value === 'undefined' || value === '') {
+        this.setData({ placeholderValue: placeholder })
+      }
     }
   },
   lifetimes: {
