@@ -16,6 +16,7 @@ page {
 
 .title:first-child {
   margin-top: 64rpx;
+  letter-spacing: 8rpx;
 }
 
 .title {
@@ -78,6 +79,10 @@ page {
   color:rgba(255,255,255,1);
   font-size: var(--main-fontSize);
   margin: 110rpx auto 90rpx auto;
+}
+
+.btn-hover {
+  background: var(--themeColor);
 }
 
 .tip {

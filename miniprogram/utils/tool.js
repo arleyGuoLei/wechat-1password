@@ -1,4 +1,5 @@
 import log from './log'
+const sm3 = require('miniprogram-sm-crypto').sm3
 
 const OPENID = 'uid'
 
@@ -15,7 +16,11 @@ export default {
         title: msg,
         icon: 'none',
         duration,
-        complete: resolve
+        complete() {
+          setTimeout(() => {
+            resolve()
+          }, duration)
+        }
       })
     )
   },
@@ -25,9 +30,6 @@ export default {
         resolve()
       }, time)
     })
-  },
-  reLaunch() {
-    wx.reLaunch({ url: '/pages/home/home' })
   },
   callCloud(options, showLoading = true) {
     showLoading && wx.showLoading({ title: '获取数据中', mask: true })
@@ -39,5 +41,26 @@ export default {
       showLoading && wx.hideLoading()
       throw e
     })
-  }
+  },
+  get store() {
+    const store = getApp().store
+    return {
+      set: (key, value) => {
+        if (key && value) {
+          store[key] = value
+        }
+      },
+      get: (key) => {
+        return store[key]
+      }
+    }
+  },
+  sm3(str) {
+    return sm3(str)
+  },
+  loading(title = '加载中', mask = true) {
+    return new Promise(resolve => { wx.showLoading({ title, mask, complete: resolve }) })
+  },
+  hideLoading() { wx.hideLoading() }
+
 }

@@ -1,17 +1,23 @@
+import User from './model/user'
+import $ from './utils/tool'
+
 App({
   initUiGlobal() {
-    wx.getSystemInfo({
-      success: e => {
-        this.globalData.StatusBar = e.statusBarHeight
-        this.globalData.screenHeight = e.screenHeight
-        const capsule = wx.getMenuButtonBoundingClientRect()
-        if (capsule) {
-          this.globalData.Custom = capsule
-          this.globalData.CustomBar = capsule.bottom + capsule.top - e.statusBarHeight
-        } else {
-          this.globalData.CustomBar = e.statusBarHeight + 50
-        }
-      }
+    return new Promise(resolve => {
+      wx.getSystemInfo({
+        success: e => {
+          this.globalData.StatusBar = e.statusBarHeight
+          this.globalData.screenHeight = e.screenHeight
+          const capsule = wx.getMenuButtonBoundingClientRect()
+          if (capsule) {
+            this.globalData.Custom = capsule
+            this.globalData.CustomBar = capsule.bottom + capsule.top - e.statusBarHeight
+          } else {
+            this.globalData.CustomBar = e.statusBarHeight + 50
+          }
+        },
+        complete: resolve
+      })
     })
   },
   initEnv() {
@@ -20,9 +26,20 @@ App({
     wx.cloud.init({ env, traceUser: true })
     this.globalData.env = env
   },
-  onLaunch() {
+  async login() {
+    const user = new User()
+    const { data: info } = await user.getInfo()
+    if (info.length === 0) {
+      await user.register()
+      $.store.set('encryption', '')
+    } else {
+      $.store.set('encryption', info[0].encryption)
+    }
+  },
+  async onLaunch() {
     this.initEnv()
-    this.initUiGlobal()
+    await this.initUiGlobal()
+    this.login()
   },
   globalData: {
     StatusBar: null,
@@ -30,5 +47,8 @@ App({
     CustomBar: null,
     screenHeight: null,
     env: ''
+  },
+  store: {
+    encryption: ''
   }
 })

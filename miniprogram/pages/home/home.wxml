@@ -16,7 +16,7 @@
 </view>
 
 <view class="btns animated slideInRight faster">
-  <view class="btn-add">
+  <view class="btn-add" catchtap="addAccount">
     <image src="./../../images/home-add.png" class="btn-add__img" />
     <text class="btn-add__text">记个密码</text>
   </view>

@@ -20,5 +20,8 @@
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-config-tcel": "^1.0.4"
+  },
+  "dependencies": {
+    "miniprogram-sm-crypto": "^0.1.0"
   }
 }

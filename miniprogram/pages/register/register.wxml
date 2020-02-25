@@ -1,6 +1,8 @@
 <header>
   <view class="header" slot="content">
-    <image class="close" src="./../../images/close.png" />
+  <navigator open-type="navigateBack">
+    <image class="close" src="./../../images/close.png"/>
+  </navigator>
   </view>
 </header>
 
@@ -10,17 +12,17 @@
 </view>
 
 <view class="pwd-box">
-  <x-input cursorSpacing="0" maxLength="16" placeholder="请输入" bind:inputChange="titleChange"></x-input>
-  <x-input cursorSpacing="0" maxLength="16" placeholder="重复输入" bind:inputChange="titleChange"></x-input>
+  <x-input cursorSpacing="0" maxLength="16" placeholder="请输入" bind:inputChange="onPwdChange"></x-input>
+  <x-input cursorSpacing="0" maxLength="16" placeholder="重复输入" bind:inputChange="onPwd2Change"></x-input>
 </view>
 
 <checkbox-group class="checkbox-group" bindchange="onChange">
   <label class="checkbox">
-    <checkbox value="" checked=""/>已了解 「本平台不存储主密码」
+    <checkbox value="know" checked="{{checked}}"/>已了解 「本平台不存储主密码」
   </label>
 </checkbox-group>
 
-<button class="btn">确 定</button>
+<button class="btn" hover-class="btn-hover" catchtap="onSubmit">确 定</button>
 
 <view class="tip">
   <image class="tip-img" src="./../../images/tip.png" />

@@ -3,6 +3,7 @@
 page {
   --main-fontColor: #333333;
   --main-fontSize: 34rpx;
+  --themeColor: #88BC9D;
 }
 
 .over-ellipsis {

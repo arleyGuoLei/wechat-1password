@@ -1,6 +1,8 @@
 <header>
   <view class="header" slot="content">
-    <image class="header-img" src="./../../images/back.png" />
+    <navigator open-type="navigateBack">
+      <image class="header-img" src="./../../images/back.png" />
+    </navigator>
     <text class="header-title">记个密码</text>
   </view>
 </header>
