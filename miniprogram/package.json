@@ -9,7 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "miniprogram-sm-crypto": "^0.1.0"
-  }
+  "dependencies": {}
 }

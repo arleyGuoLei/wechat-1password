@@ -1,5 +1,4 @@
 import log from './log'
-const sm3 = require('miniprogram-sm-crypto').sm3
 
 const OPENID = 'uid'
 
@@ -56,11 +55,17 @@ export default {
     }
   },
   sm3(str) {
-    return sm3(str)
+    return str
+    // return sm3(str)
   },
   loading(title = '加载中', mask = true) {
     return new Promise(resolve => { wx.showLoading({ title, mask, complete: resolve }) })
   },
-  hideLoading() { wx.hideLoading() }
+  hideLoading() { wx.hideLoading() },
+  encrypt(value, key) {
 
+  },
+  decrypt(value, key) {
+
+  }
 }
