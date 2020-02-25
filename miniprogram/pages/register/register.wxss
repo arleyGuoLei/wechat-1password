@@ -1,0 +1,100 @@
+page {
+  background-color: #ffffff;
+}
+
+.header {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.close {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 28rpx;
+}
+
+.title:first-child {
+  margin-top: 64rpx;
+}
+
+.title {
+  font-size: 44rpx;
+  font-weight: 700;
+  color:rgba(51,51,51,1);
+  display: block;
+  margin-top: 32rpx;
+  margin-left: 32rpx;
+}
+
+.pwd-box {
+  display: flex;
+  flex-direction: column;
+  height: 224rpx;
+  justify-content: space-between;
+  margin-top: 9vh;
+}
+
+.checkbox-group{
+  text-align: center;
+  display: block;
+  margin: 98rpx auto 0 auto;
+}
+
+.checkbox{
+  font-size:32rpx;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+}
+
+.checkbox > checkbox .wx-checkbox-input {
+  width: 34rpx;
+  height: 34rpx;
+  background-color: #ffffff;
+  border: 2px solid #88BC9D;
+  transform: translateY(-2px);
+  margin-right: 24rpx;
+}
+
+.checkbox > checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 34rpx;
+  height: 34rpx;
+  line-height: 34rpx;
+  font-weight: 700;
+  text-align: center;
+  font-size: 34rpx;
+  color: #88BC9D;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.btn {
+  width:400rpx;
+  height:84rpx;
+  background:linear-gradient(180deg,rgba(189,223,204,1) 0%,rgba(136,188,157,1) 100%);
+  border-radius:42rpx;
+  line-height: 84rpx;
+  padding: 0;
+  font-weight:500;
+  color:rgba(255,255,255,1);
+  font-size: var(--main-fontSize);
+  margin: 110rpx auto 90rpx auto;
+}
+
+.tip {
+  height: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tip-img {
+  height: 32rpx;
+  width: 32rpx;
+  margin-right: 16rpx;
+}
+
+.tip-text {
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+}

@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/addAccount/addAccount"
+    "pages/addAccount/addAccount",
+    "pages/register/register"
   ],
   "window": {
     "backgroundColor": "#FFFFFF",
@@ -10,7 +11,8 @@
     "navigationStyle": "custom"
   },
   "usingComponents": {
-    "header": "/components/header/header"
+    "header": "/components/header/header",
+    "x-input": "/components/input/input"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

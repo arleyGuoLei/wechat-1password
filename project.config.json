@@ -41,6 +41,13 @@
 					"id": -1,
 					"name": "pages/addAccount/addAccount",
 					"pathName": "pages/addAccount/addAccount",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/register/register",
+					"pathName": "pages/register/register",
 					"scene": null
 				}
 			]

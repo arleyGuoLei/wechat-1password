@@ -6,6 +6,6 @@
     value="{{inputValue}}" 
     maxlength="{{maxLength}}" 
     bindinput="inputContent"
-    cursor-spacing="84"
+    cursor-spacing="{{cursorSpacing}}"
   />
 </view>

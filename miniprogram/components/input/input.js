@@ -11,6 +11,10 @@ Component({
     maxLength: {
       type: Number,
       value: -1
+    },
+    cursorSpacing: {
+      type: Number,
+      value: 84
     }
   },
   data: {

@@ -1,0 +1,28 @@
+<header>
+  <view class="header" slot="content">
+    <image class="close" src="./../../images/close.png" />
+  </view>
+</header>
+
+<view>
+  <text class="title">WELCOME</text>
+  <text class="title">设置一个主密码</text>
+</view>
+
+<view class="pwd-box">
+  <x-input cursorSpacing="0" maxLength="16" placeholder="请输入" bind:inputChange="titleChange"></x-input>
+  <x-input cursorSpacing="0" maxLength="16" placeholder="重复输入" bind:inputChange="titleChange"></x-input>
+</view>
+
+<checkbox-group class="checkbox-group" bindchange="onChange">
+  <label class="checkbox">
+    <checkbox value="" checked=""/>已了解 「本平台不存储主密码」
+  </label>
+</checkbox-group>
+
+<button class="btn">确 定</button>
+
+<view class="tip">
+  <image class="tip-img" src="./../../images/tip.png" />
+  <text class="tip-text">主密码用于解密数据，不可修改</text>
+</view>
