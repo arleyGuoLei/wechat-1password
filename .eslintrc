@@ -1,0 +1,6 @@
+{
+  "extends": "eslint-config-tcel",
+  "rules": {
+    "semi": ["error", "never"]
+  }
+}

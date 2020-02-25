@@ -1,0 +1,33 @@
+<header>
+  <view class="header" slot="content">
+    <open-data class="header-avatar" default-avatar="./../../images/default-avatar.png" type="userAvatarUrl"></open-data>
+    <view class="header-nick over-ellipsis animated fadeIn slow"><open-data default-text="我(loading...)" type="userNickName"></open-data>的密码本</view>
+  </view>
+</header>
+
+<image class="logo" src="./../../images/home-logo.png" />
+
+<view class="search">
+  <image class="search-car animated infinite slower car-run" src="./../../images/home-car.png" />
+  <input class="search-text" type="text" placeholder="要找什么账号的密码？" placeholder-class="search-text__search-text" />
+  <view class="search-button">
+    <image class="search-button__img" src="./../../images/home-search.png" />
+  </view>
+</view>
+
+<view class="btns animated slideInRight faster">
+  <view class="btn-add">
+    <image src="./../../images/home-add.png" class="btn-add__img" />
+    <text class="btn-add__text">记个密码</text>
+  </view>
+
+  <view class="btn-select">
+    <image src="./../../images/home-pwd.png" class="btn-select__img" />
+    <text class="btn-select__text">全部记录</text>
+  </view>
+
+  <view class="btn-setting">
+    <image src="./../../images/home-setting.png" class="btn-setting__img" />
+    <text class="btn-setting__text">偏好设置</text>
+  </view>
+</view>

@@ -1,0 +1,11 @@
+<view class="input">
+  <text class="input-placeholder">{{placeholderValue}}</text>
+  <input 
+    class="input-text" 
+    placeholder="" 
+    value="{{inputValue}}" 
+    maxlength="{{maxLength}}" 
+    bindinput="inputContent"
+    cursor-spacing="84"
+  />
+</view>

@@ -1,0 +1,12 @@
+.header {
+  width: 750rpx;
+  box-sizing: border-box;
+}
+
+.content {
+  width: 750rpx;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}

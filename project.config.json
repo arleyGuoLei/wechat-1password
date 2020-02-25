@@ -30,13 +30,18 @@
 		"game": {
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 0,
 			"list": [
 				{
 					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide"
+					"name": "pages/addAccount/addAccount",
+					"pathName": "pages/addAccount/addAccount",
+					"scene": null
 				}
 			]
 		}

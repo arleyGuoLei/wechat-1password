@@ -1,0 +1,80 @@
+<header>
+  <view class="header" slot="content">
+    <image class="header-img" src="./../../images/back.png" />
+    <text class="header-title">记个密码</text>
+  </view>
+</header>
+
+<scroll-view enable-flex="{{true}}"	scroll-y="{{true}}" class="scroll-view" style="height:{{viewHeight}}px;">
+  <view class="card">
+    <text class="card-title">描述</text>
+    <x-input placeholder="给存储信息取个名字？" bind:inputChange="titleChange"></x-input>
+  </view>
+
+  <view class="card">
+    <view class="card-title-box">
+      <input class="card-title-edit" maxlength="4" value="{{userKey}}"></input>
+      <view class="card-title__btn">
+        <image src="./../../images/account-edit.png" />
+        <text>更改名称</text>
+      </view>
+    </view>
+    <x-input placeholder="请输入用户名/账号/卡号等" bind:inputChange="userChange"></x-input>
+  </view>
+
+  <view class="card" style="padding-bottom:0;">
+    <view class="card-title-box">
+      <text class="card-title" style="margin: 0 0 0 32rpx;">密码</text>
+      <view class="card-title__btn">
+        <image src="./../../images/account-update.png" />
+        <text>生成复制</text>
+      </view>
+    </view>
+    <x-input placeholder="请输入" bind:inputChange="userChange"></x-input>
+    <view class="pwd-setting">
+      <image src="./../../images/account-setting.png" />
+      <text>规则偏好</text>
+    </view>
+  </view>
+
+  <view class="pwd">
+    <checkbox-group class="checkbox-group" bindchange="pwdSettingChange">
+      <label class="checkbox" wx:for="{{pwdItems}}">
+        <checkbox value="{{item.value}}" checked="{{item.checked}}"/>{{item.value}}
+      </label>
+    </checkbox-group>
+    <view class="pwd-len">
+      <view class="pwd-slider">
+        <view class="slider-activeBg"></view>
+        <slider min="4" max="32" value="12" activeColor="#88BC9D" backgroundColor="#88BC9D" block-size="20" />
+      </view>
+      <text class="pwd-text">16位</text>
+    </view>
+  </view>
+
+  <view class="card-line">
+    <text>更多选项（选填）</text>
+    <switch checked="{{moreOptions}}" bindchange="switchOptions" color="#88BC9D" />
+  </view>
+
+  <block>
+    <view class="card">
+      <text class="card-title">链接/平台</text>
+      <x-input placeholder="请输入" bind:inputChange="titleChange"></x-input>
+    </view>
+    <view class="card">
+      <text class="card-title">手机</text>
+      <x-input placeholder="请输入" bind:inputChange="titleChange"></x-input>
+    </view>
+    <view class="card">
+      <text class="card-title">邮箱</text>
+      <x-input placeholder="请输入" bind:inputChange="titleChange"></x-input>
+    </view>
+    <view class="card">
+      <text class="card-title">备注</text>
+      <textarea cursor-spacing="72" class="textarea" placeholder-class="textarea-placeholder" placeholder="自由填写" maxlength="-1" />
+    </view>
+  </block>
+
+  <button class="save">保存</button>
+</scroll-view>
