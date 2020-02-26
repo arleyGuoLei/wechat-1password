@@ -78,5 +78,7 @@
     </view>
   </block>
 
-  <button class="save" catchtap="onSave">保存</button>
+  <button disabled="{{saveLoading}}" loading="{{saveLoading}}" class="save" catchtap="onSave">保存</button>
 </scroll-view>
+
+<validatePwd show="{{validatePwdShow}}" bind:validateSuccess="validateSuccess"></validatePwd>

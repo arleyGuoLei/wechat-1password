@@ -1,5 +1,5 @@
 import log from './log'
-
+const CryptoJS = require('./cryptojs/cryptojs.js').Crypto
 const OPENID = 'uid'
 
 export default {
@@ -54,18 +54,17 @@ export default {
       }
     }
   },
-  sm3(str) {
-    return str
-    // return sm3(str)
+  digest(str) {
+    return CryptoJS.SHA256(str)
   },
   loading(title = '加载中', mask = true) {
     return new Promise(resolve => { wx.showLoading({ title, mask, complete: resolve }) })
   },
   hideLoading() { wx.hideLoading() },
   encrypt(value, key) {
-
+    return CryptoJS.AES.encrypt(value, key).toString()
   },
   decrypt(value, key) {
-
+    return CryptoJS.AES.decrypt(value, key).toString()
   }
 }

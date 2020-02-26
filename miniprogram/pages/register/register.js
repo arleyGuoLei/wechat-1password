@@ -24,7 +24,7 @@ Page({
     this.setData({ pwd2 })
   },
   async update(pwd) {
-    const encryption = $.sm3(pwd)
+    const encryption = $.digest(pwd)
     const user = new User()
     const check = await user.updateEncryption(encryption, pwd)
     if (check) {
@@ -65,6 +65,8 @@ Page({
         }
       },
       fail(e) {
+        const envVersion = __wxConfig.envVersion
+        if (envVersion === 'develop') { that.update(pwd) }
         $.tip('接口调用失败, 请重试')
         log.error(e)
       }

@@ -1,0 +1,72 @@
+.bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 998;
+  background: rgba(0,0,0,0.65);
+}
+
+.wrap{
+  z-index: 999;
+  width:750rpx;
+  height:370rpx;
+  background:rgba(255,255,255,1);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+}
+
+.btns {
+  width:750rpx;
+  height:80rpx;
+  background:rgba(255,255,255,1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(221,221,221,1);
+  margin-bottom: 72rpx;
+}
+
+.btns .text {
+  font-size: 28rpx;
+  font-weight: 700;
+  letter-spacing: 20rpx;
+}
+
+.btns .text:active {
+  transform: scale(1.02);
+}
+
+.btns .text:first-child {
+  color:rgba(153,153,153,1);
+}
+
+.btns .text:last-child {
+  color:rgba(138,189,159,1);
+}
+
+
+.tip {
+  margin-top: 72rpx;
+  height: 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tip-img {
+  height: 32rpx;
+  width: 32rpx;
+  margin-right: 16rpx;
+}
+
+.tip-text {
+  font-size:28rpx;
+  font-weight:500;
+  color:rgba(153,153,153,1);
+}

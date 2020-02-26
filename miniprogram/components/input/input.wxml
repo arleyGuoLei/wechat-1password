@@ -7,5 +7,7 @@
     maxlength="{{maxLength}}" 
     bindinput="inputContent"
     cursor-spacing="{{cursorSpacing}}"
+    password="{{isPassword}}"
+    focus="{{autoFocus}}"
   />
 </view>

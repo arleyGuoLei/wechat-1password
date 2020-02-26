@@ -30,7 +30,7 @@ export default class extends Base {
     if (code !== -1) {
       $.store.set('encryption', encryption)
       wx.setStorageSync('pwd', pwd)
-      return code
+      return true
     } else {
       $.tip('设置失败')
     }

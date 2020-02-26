@@ -7,12 +7,13 @@
   "window": {
     "backgroundColor": "#FFFFFF",
     "backgroundTextStyle": "light",
-    "navigationBarTitleText": "我的密码本",
+    "navigationBarTitleText": "有本密码",
     "navigationStyle": "custom"
   },
   "usingComponents": {
     "header": "/components/header/header",
-    "x-input": "/components/input/input"
+    "x-input": "/components/input/input",
+    "validatePwd": "/components/validatePwd/validatePwd"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

@@ -19,6 +19,14 @@ Component({
     tag: {
       type: String,
       value: ''
+    },
+    isPassword: {
+      type: Boolean,
+      value: false
+    },
+    autoFocus: {
+      type: Boolean,
+      value: false
     }
   },
   data: {

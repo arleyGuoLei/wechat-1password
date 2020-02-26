@@ -6,8 +6,10 @@ Page({
   data: {
     userKey: '用户名',
     userTitleFocus: false,
-    pwdSetting: true,
+    pwdSetting: false,
     moreOptionsShow: false,
+    validatePwdShow: false,
+    saveLoading: false,
     pwdArray: [0, 1, 2], // 生成密码时候的源Index
     passwordLen: 12,
     pwdItems: [
@@ -29,33 +31,19 @@ Page({
   onLoad(options) {
 
   },
-  validata() {
-    const { data: { title, account, password, phone, mail } } = this
-    if (title === '') {
-      $.tip('描述不能为空')
-      return false
-    }
-    if (account === '') {
-      $.tip('用户名不能为空')
-      return false
-    }
-    if (password === '') {
-      $.tip('密码不能为空')
-      return false
-    }
-    if (phone !== '' && !/^1[3-9]\d{9}$/.test(phone)) {
-      $.tip('手机格式错误')
-      return false
-    }
-    if (mail !== '' && !/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(mail)) {
-      $.tip('邮箱格式错误')
-      return false
-    }
-    return true
+  validateSuccess(e) {
+    const { detail: { password } } = e
+    this.onSave({}, true, password) // 手动验证主密码，且验证通过
   },
-  async onSave() {
-    if (this.validata()) {
-      const { data: { title, account, password, platform, phone, mail, desc, userKey } } = this
+  async onSave(e, passValidate = false, mainPassword = '') {
+    if (this.validate() || passValidate) {
+      this.setData({ saveLoading: true })
+      const { data: { title, account, password: pwd, platform, phone, mail, desc, userKey } } = this
+      let mainKey = mainPassword
+      if (mainPassword === '') {
+        mainKey = wx.getStorageSync('pwd')
+      }
+      const password = $.encrypt(pwd, mainKey)
       const obj = { title, account, password, platform, phone, mail, desc, userKey }
       const passwordModel = new PasswordDb()
       const { _id = '' } = await passwordModel.add(obj)
@@ -65,6 +53,7 @@ Page({
       } else {
         $.tip('保存失败, 请重试', 1000)
       }
+      this.setData({ saveLoading: false })
     }
   },
   onCreatePwd() {
@@ -103,5 +92,35 @@ Page({
     const { currentTarget: { dataset: { tag } } } = e
     const { detail: { value } } = e
     this.setData({ [tag]: value })
+  },
+  validate() {
+    const { data: { title, account, password, phone, mail } } = this
+    if (title === '') {
+      $.tip('描述不能为空')
+      return false
+    }
+    if (account === '') {
+      $.tip('用户名不能为空')
+      return false
+    }
+    if (password === '') {
+      $.tip('密码不能为空')
+      return false
+    }
+    if (phone !== '' && !/^1[3-9]\d{9}$/.test(phone)) {
+      $.tip('手机格式错误')
+      return false
+    }
+    if (mail !== '' && !/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(mail)) {
+      $.tip('邮箱格式错误')
+      return false
+    }
+    const localPwd = wx.getStorageSync('pwd')
+    const encryption = $.store.get('encryption')
+    if ($.digest(localPwd) !== encryption) {
+      this.setData({ validatePwdShow: true })
+      return false
+    }
+    return true
   }
 })
