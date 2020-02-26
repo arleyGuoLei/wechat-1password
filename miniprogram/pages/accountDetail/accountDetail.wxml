@@ -1,0 +1,51 @@
+<header>
+  <view class="header" slot="content">
+    <navigator open-type="navigateBack">
+      <image class="header-img" src="./../../images/back.png" />
+    </navigator>
+    <text class="header-title">详情</text>
+  </view>
+</header>
+
+<view class="card">
+  <text class="card-header__title over-ellipsis">{{title}}</text>
+  <view class="card-main__user" catchtap="onCopy" data-copy-value="{{account}}">
+    <text class="user-title over-ellipsis">{{userKey}}：</text>
+    <text selectable="{{true}}" class="user-text over-ellipsis">{{account}}</text>
+  </view>
+  <view class="card-main__password" catchtap="onTapPwd" data-j="{{jPassword?true:false}}">
+    <text class="password-title">密码：</text>
+    <text selectable="{{true}}" class="password-text over-ellipsis">{{jPassword?jPassword:'●●●●●●●●●●●●●'}}</text>
+    <image class="card-header__show" src="./../../images/list-show.png" />
+  </view>
+  <view wx:if="{{platform}}" class="card-main__user" catchtap="onCopy" data-copy-value="{{platform}}">
+    <text class="user-title">链接：</text>
+    <text selectable="{{true}}" class="user-text over-ellipsis">{{platform}}</text>
+  </view>
+  <view wx:if="{{phone}}" class="card-main__user" catchtap="onCopy" data-copy-value="{{phone}}">
+    <text class="user-title">手机：</text>
+    <text selectable="{{true}}" class="user-text over-ellipsis">{{phone}}</text>
+  </view>
+  <view wx:if="{{mail}}" class="card-main__user" catchtap="onCopy" data-copy-value="{{mail}}">
+    <text class="user-title">邮箱：</text>
+    <text selectable="{{true}}" class="user-text over-ellipsis">{{mail}}</text>
+  </view>
+  <view wx:if="{{desc}}" class="card-desc" catchtap="onCopy" data-copy-value="{{desc}}">
+    <text class="desc-title">备注：</text>
+    <text selectable="{{true}}" class="desc-text">{{desc}}</text>
+  </view>
+
+  <view class="card-footer">
+    <text class="card-footer__time">更新时间：{{updateTime}}</text>
+    <text class="card-footer__number">查看：{{times}}</text>
+  </view>
+
+</view>
+
+<view class="card-btns">
+  <text catchtap="onDelete">删 除</text>
+  <text catchtap="onUpdate">修 改</text>
+</view>
+
+
+<validatePwd show="{{validatePwdShow}}" bind:validateSuccess="validateSuccess"></validatePwd>

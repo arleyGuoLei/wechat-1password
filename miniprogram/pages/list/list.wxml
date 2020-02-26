@@ -8,14 +8,14 @@
 </header>
 
 
-<scroll-view scroll-y="{{true}}" style="height: {{listHeight}}px;"
+<scroll-view wx:if="{{list.length!==0}}" scroll-y="{{true}}" style="height: {{listHeight}}px;"
   enable-flex="{{true}}" 
   bindscrolltolower="onReachBottom"
   lower-threshold="100"
 >
   <block wx:for="{{list}}" wx:key="index" wx:for-index="index" wx:for-item="account">
     <view class="card">
-      <view class="card-header" catchtap="onMenu">
+      <view class="card-header" data-index="{{index}}" catchtap="onMenu">
         <text class="card-header__title over-ellipsis">{{account.title}}</text>
         <image class="card-header__detail" src="./../../images/list-detail.png" data-index="{{index}}"/>
       </view>
@@ -38,5 +38,10 @@
   </block>
   <text class="onBottom" wx:if="{{onBottom}}">📒 没有更多数据 📒</text>
 </scroll-view>
+
+<view wx:else class="empty">
+  <image src="./../../images/list-empty.png" />
+  <text>密码本没找到记录</text>
+</view>
 
 <validatePwd show="{{validatePwdShow}}" bind:validateSuccess="validateSuccess"></validatePwd>

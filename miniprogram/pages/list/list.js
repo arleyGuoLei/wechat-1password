@@ -1,4 +1,5 @@
 import $ from './../../utils/tool'
+import router from './../../utils/router'
 import Password from './../../model/password'
 
 import { fingerCheck } from './../../utils/util'
@@ -33,10 +34,17 @@ Page({
     this.setData({ list: localList, pageSum: localPageSum, page })
     $.hideLoading()
   },
-  onMenu() {
+  onMenu(e) {
+    const { currentTarget: { dataset: { index } } } = e
+    const { data: { list } } = this
     wx.showActionSheet({
-      itemList: ['详情', '修改'],
+      itemList: ['详情', '修改', '删除'],
       success(res) {
+        if (res.tapIndex === 0) {
+          router.push('accountDetail', {}, res => {
+            res.eventChannel.emit('postDetailData', { data: list[index] })
+          })
+        }
         console.log(res.tapIndex)
       },
       fail(res) {
@@ -89,7 +97,6 @@ Page({
       const key = `list[${index}].jPassword`
       this.setData({ [key]: '' })
     }
-    console.log('log => : onTapPwd -> e', e)
   }
 
 })

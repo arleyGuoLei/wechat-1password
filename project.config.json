@@ -56,6 +56,13 @@
 					"id": -1,
 					"name": "pages/list/list",
 					"pathName": "pages/list/list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/accountDetail/accountDetail",
+					"pathName": "pages/accountDetail/accountDetail",
 					"scene": null
 				}
 			]

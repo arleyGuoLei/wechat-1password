@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/addAccount/addAccount",
     "pages/register/register",
-    "pages/list/list"
+    "pages/list/list",
+    "pages/accountDetail/accountDetail"
   ],
   "window": {
     "backgroundColor": "#FFFFFF",

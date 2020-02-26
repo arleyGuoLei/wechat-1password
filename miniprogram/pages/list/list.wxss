@@ -168,6 +168,26 @@ page {
   color:rgba(153,153,153,1);
   display: block;
   text-align: center;
-  margin-top: 10rpx;
+  margin-top: 40rpx;
   margin-bottom: 24rpx;
+}
+
+.empty {
+  margin-top: 25vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.empty image {
+  width: 340rpx;
+  height: 360rpx;
+}
+
+.empty text {
+  font-size:34rpx;
+  font-weight:500;
+  color:rgba(137,218,211,1);
+  margin-top: 42rpx;
 }

@@ -19,7 +19,7 @@ Component({
     attached() {
       setTimeout(() => {
         this.setData({ autoFocus: true })
-      }, 2500)
+      }, 2000)
     }
   },
   methods: {
