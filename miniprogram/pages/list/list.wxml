@@ -1,0 +1,42 @@
+<header>
+  <view class="header" slot="content">
+    <navigator open-type="navigateBack">
+      <image class="header-img" src="./../../images/back.png" />
+    </navigator>
+    <text class="header-title">{{title}}</text>
+  </view>
+</header>
+
+
+<scroll-view scroll-y="{{true}}" style="height: {{listHeight}}px;"
+  enable-flex="{{true}}" 
+  bindscrolltolower="onReachBottom"
+  lower-threshold="100"
+>
+  <block wx:for="{{list}}" wx:key="index" wx:for-index="index" wx:for-item="account">
+    <view class="card">
+      <view class="card-header" catchtap="onMenu">
+        <text class="card-header__title over-ellipsis">{{account.title}}</text>
+        <image class="card-header__detail" src="./../../images/list-detail.png" data-index="{{index}}"/>
+      </view>
+      <view class="card-main" data-index="{{index}}" catchtap="onTapUser">
+        <view class="card-main__user">
+          <text class="user-title over-ellipsis">{{account.userKey}}：</text>
+          <text selectable="{{true}}" class="user-text over-ellipsis">{{account.account}}</text>
+        </view>
+        <view class="card-main__password" catchtap="onTapPwd" data-j="{{account.jPassword?true:false}}" data-index="{{index}}">
+          <text class="password-title">密码：</text>
+          <text selectable="{{true}}" class="password-text over-ellipsis">{{account.jPassword?account.jPassword:'●●●●●●●●●●●●●'}}</text>
+          <image class="card-header__show" src="./../../images/list-show.png" />
+        </view>
+      </view>
+      <view class="card-footer">
+        <text class="card-footer__time">更新时间：{{account.updateTime}}</text>
+        <text class="card-footer__number">查看：{{account.times}}</text>
+      </view>
+    </view>
+  </block>
+  <text class="onBottom" wx:if="{{onBottom}}">📒 没有更多数据 📒</text>
+</scroll-view>
+
+<validatePwd show="{{validatePwdShow}}" bind:validateSuccess="validateSuccess"></validatePwd>

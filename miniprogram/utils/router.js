@@ -1,7 +1,8 @@
 const pages = {
   home: '/pages/home/home',
   addAccount: '/pages/addAccount/addAccount',
-  register: '/pages/register/register'
+  register: '/pages/register/register',
+  list: '/pages/list/list'
 }
 
 export default {

@@ -1,7 +1,8 @@
 import $ from './../../utils/tool'
-import log from './../../utils/log'
 import User from './../../model/user'
 import router from './../../utils/router'
+import { fingerCheck } from './../../utils/util'
+
 Page({
   data: {
     pwd: '',
@@ -38,38 +39,11 @@ Page({
     if (pwd !== pwd2) { return $.tip('两次输入密码不一致') }
     if (!checked) { return $.tip('请勾选已了解') }
     if (/[\u4e00-\u9fa5]/.test(pwd)) { return $.tip('密码不能含有中文') }
-    this.fingerCheck(pwd)
-  },
-  fingerCheck(pwd) {
-    const that = this
-    wx.checkIsSoterEnrolledInDevice({
-      checkAuthMode: 'fingerPrint',
-      success(res) {
-        const { isEnrolled = false } = res
-        if (isEnrolled) {
-          wx.startSoterAuthentication({
-            requestAuthModes: ['fingerPrint'],
-            challenge: pwd,
-            authContent: '请验证指纹',
-            success(res) {
-              const { errCode = -1 } = res
-              if (errCode === 0) {
-                that.update(pwd)
-              } else {
-                $.tip('指纹验证失败, 请重试')
-              }
-            }
-          })
-        } else {
-          that.update(pwd)
-        }
-      },
-      fail(e) {
-        const envVersion = __wxConfig.envVersion
-        if (envVersion === 'develop') { that.update(pwd) }
-        $.tip('接口调用失败, 请重试')
-        log.error(e)
-      }
+    fingerCheck(pwd).then(() => {
+      this.update(pwd)
+    }).catch(e => {
+      const envVersion = __wxConfig.envVersion
+      if (envVersion === 'develop') { this.update(pwd) }
     })
   }
 })

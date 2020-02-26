@@ -20,5 +20,8 @@ Page({
     } else {
       router.push('addAccount')
     }
+  },
+  routerList() {
+    router.push('list')
   }
 })

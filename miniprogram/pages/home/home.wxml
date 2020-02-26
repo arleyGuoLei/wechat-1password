@@ -21,10 +21,11 @@
     <text class="btn-add__text">记个密码</text>
   </view>
 
-  <view class="btn-select">
-    <image src="./../../images/home-pwd.png" class="btn-select__img" />
-    <text class="btn-select__text">全部记录</text>
-  </view>
+<view class="btn-select" catchtap="routerList">
+  <image src="./../../images/home-pwd.png" class="btn-select__img" />
+  <text class="btn-select__text">全部记录</text>
+</view>
+
 
   <view class="btn-setting">
     <image src="./../../images/home-setting.png" class="btn-setting__img" />

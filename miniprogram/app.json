@@ -2,7 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/addAccount/addAccount",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/list/list"
   ],
   "window": {
     "backgroundColor": "#FFFFFF",

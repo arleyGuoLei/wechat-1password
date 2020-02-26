@@ -12,13 +12,14 @@ Component({
   },
   data: {
     password: '',
-    autoFocus: false
+    autoFocus: false,
+    placeholder: '请输入验证主密码'
   },
   lifetimes: {
     attached() {
       setTimeout(() => {
         this.setData({ autoFocus: true })
-      }, 2000)
+      }, 2500)
     }
   },
   methods: {
@@ -38,11 +39,11 @@ Component({
       }
       this.triggerEvent('validateSuccess', { password })
       wx.setStorageSync('pwd', password)
-      this.setData({ show: false })
+      this.setData({ show: false, password: '', placeholder: '请输入验证主密码' })
       return true
     },
     quit() {
-      this.setData({ show: false })
+      this.setData({ show: false, password: '', placeholder: '请输入验证主密码' })
     },
     onInput(e) {
       const { detail: { value } } = e

@@ -5,7 +5,7 @@
       <text class="text" catchtap="quit">取消</text>
       <text class="text" catchtap="validate">确定</text>
     </view>
-    <x-input cursorSpacing="2" autoFocus="{{autoFocus}}" id="password" isPassword="{{true}}" inputValue="{{password}}" bind:inputChange="onInput" placeholder="请输入验证主密码"></x-input>
+    <x-input cursorSpacing="2" autoFocus="{{autoFocus}}" id="password" isPassword="{{true}}" inputValue="{{password}}" bind:inputChange="onInput" placeholder="{{placeholder}}"></x-input>
     <view class="tip">
       <image class="tip-img" src="./../../images/tip.png" />
       <text class="tip-text">主密码用于解密数据，不可修改</text>
