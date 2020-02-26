@@ -27,6 +27,7 @@ App({
     this.globalData.env = env
   },
   async login() {
+    $.loading()
     const user = new User()
     const { data: info } = await user.getInfo()
     if (info.length === 0) {
@@ -35,6 +36,7 @@ App({
     } else {
       $.store.set('encryption', info[0].encryption)
     }
+    $.hideLoading()
   },
   async onLaunch() {
     this.initEnv()

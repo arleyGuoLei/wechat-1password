@@ -15,7 +15,7 @@ Page({
     onBottom: false, // 到底了
     validatePwdShow: false
   },
-  onLoad(options) {
+  onLoad() {
     this.getData()
   },
   onReachBottom() {
@@ -45,7 +45,11 @@ Page({
             res.eventChannel.emit('postDetailData', { data: list[index] })
           })
         }
-        console.log(res.tapIndex)
+        if (res.tapIndex === 1) {
+          router.push('addAccountUpdate', {}, res => {
+            res.eventChannel.emit('postDetailData', { data: list[index] })
+          })
+        }
       },
       fail(res) {
         console.log(res.errMsg)
@@ -55,8 +59,11 @@ Page({
   showPassword(index, pwd) {
     const { data: { list } } = this
     const key = `list[${index}].jPassword`
+    const timesKey = `list[${index}].times`
     const value = $.decrypt(list[index].password, pwd)
-    this.setData({ [key]: value })
+    this.setData({ [key]: value, [timesKey]: list[index].times + 1 })
+    const passwordModel = new Password()
+    passwordModel.updateTimes(list[index]._id)
     wx.setClipboardData({ data: value })
   },
   onTapUser(e) {
@@ -77,7 +84,6 @@ Page({
           throw new Error('没有指纹解锁')
         }
       }).catch(e => {
-        console.log('log => : onShowPwd -> e', e)
         this.setData({ validatePwdShow: true })
       })
     } else { // 接口调用失败

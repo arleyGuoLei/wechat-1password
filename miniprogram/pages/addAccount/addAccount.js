@@ -26,10 +26,24 @@ Page({
     platform: '',
     phone: '',
     mail: '',
-    desc: ''
+    desc: '',
+    update: false,
+    _id: ''
   },
   onLoad(options) {
-
+    const { update = false } = options
+    if (update) {
+      const that = this
+      const eventChannel = this.getOpenerEventChannel()
+      eventChannel.on('postDetailData', function({ data }) {
+        that.setData({ moreOptionsShow: true, moreOptions: true, update: true })
+        Object.keys(data).forEach(key => {
+          that.setData({
+            [key]: key === 'password' ? '' : data[key]
+          })
+        })
+      })
+    }
   },
   validateSuccess(e) {
     const { detail: { password } } = e
@@ -38,7 +52,7 @@ Page({
   async onSave(e, passValidate = false, mainPassword = '') {
     if (this.validate() || passValidate) {
       this.setData({ saveLoading: true })
-      const { data: { title, account, password: pwd, platform, phone, mail, desc, userKey } } = this
+      const { data: { title, account, password: pwd, platform, phone, mail, desc, userKey, _id: localId, update } } = this
       let mainKey = mainPassword
       if (mainPassword === '') {
         mainKey = wx.getStorageSync('pwd')
@@ -46,12 +60,25 @@ Page({
       const password = $.encrypt(pwd, mainKey)
       const obj = { title, account, password, platform, phone, mail, desc, userKey }
       const passwordModel = new PasswordDb()
-      const { _id = '' } = await passwordModel.add(obj)
-      if (_id !== '') {
-        await $.tip('保存成功', 1000)
-        router.pop()
+      if (update) {
+        const { result: { code = -1 } } = await passwordModel.update({
+          ...obj,
+          _id: localId
+        })
+        if (code === 0) {
+          await $.tip('修改成功', 1000)
+          router.reLaunch()
+        } else {
+          $.tip('内容无变更或修改失败', 1000)
+        }
       } else {
-        $.tip('保存失败, 请重试', 1000)
+        const { _id = '' } = await passwordModel.add(obj)
+        if (_id !== '') {
+          await $.tip('保存成功', 1000)
+          router.pop()
+        } else {
+          $.tip('保存失败, 请重试', 1000)
+        }
       }
       this.setData({ saveLoading: false })
     }

@@ -54,5 +54,12 @@ Component({
     attached() {
       this.init()
     }
+  },
+  observers: {
+    inputValue: function(inputValue) {
+      if (inputValue !== '') {
+        this.setData({ placeholderValue: '' })
+      }
+    }
   }
 })

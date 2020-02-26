@@ -1,6 +1,7 @@
 const pages = {
   home: '/pages/home/home',
   addAccount: '/pages/addAccount/addAccount',
+  addAccountUpdate: '/pages/addAccount/addAccount?update=true',
   register: '/pages/register/register',
   list: '/pages/list/list',
   accountDetail: '/pages/accountDetail/accountDetail'

@@ -42,4 +42,21 @@ export default class extends Base {
       pageSum
     }
   }
+
+  async update(obj) {
+    const res = await $.callCloud({
+      name: 'updateAccount',
+      data: {
+        ...obj
+      }
+    }, true)
+    return res
+  }
+
+  updateTimes(_id) {
+    return $.callCloud({
+      name: 'updateTimes',
+      data: { _id }
+    }, false)
+  }
 }

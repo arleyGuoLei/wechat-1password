@@ -7,7 +7,7 @@
   </view>
 </header>
 
-<view class="card">
+<view class="card animated fadeIn">
   <text class="card-header__title over-ellipsis">{{title}}</text>
   <view class="card-main__user" catchtap="onCopy" data-copy-value="{{account}}">
     <text class="user-title over-ellipsis">{{userKey}}：</text>

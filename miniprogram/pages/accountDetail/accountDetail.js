@@ -1,5 +1,8 @@
 import $ from './../../utils/tool'
+import router from './../../utils/router'
 import { fingerCheck } from './../../utils/util'
+import log from './../../utils/log'
+import PasswordDb from './../../model/password'
 
 Page({
   data: {
@@ -16,12 +19,14 @@ Page({
     createTime: '',
     _id: '',
     _openid: '',
-    validatePwdShow: false
+    validatePwdShow: false,
+    postObj: null
   },
   onLoad() {
     const that = this
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('postDetailData', function({ data }) {
+      that.setData({ postObj: { ...data } })
       Object.keys(data).forEach(key => {
         that.setData({
           [key]: data[key]
@@ -48,11 +53,11 @@ Page({
           throw new Error('没有指纹解锁')
         }
       }).catch(e => {
-        console.log('log => : onShowPwd -> e', e)
         this.setData({ validatePwdShow: true })
+        log.error(e)
       })
     } else { // 接口调用失败
-      console.log('接口调用失败')
+      log.error('接口调用失败')
       this.setData({ validatePwdShow: true })
     }
   },
@@ -61,14 +66,21 @@ Page({
     this.showPassword(password)
   },
   showPassword(pwd) {
-    const { data: { password } } = this
+    const { data: { password, _id, times } } = this
     const value = $.decrypt(password, pwd)
-    this.setData({ jPassword: value })
+    this.setData({ jPassword: value, times: times + 1 })
+    const passwordModel = new PasswordDb()
+    passwordModel.updateTimes(_id)
     wx.setClipboardData({ data: value })
   },
   onCopy(e) {
     const { currentTarget: { dataset: { copyValue } } } = e
-    console.log('log => : onCopy -> copyData', copyValue)
     wx.setClipboardData({ data: copyValue })
+  },
+  onUpdate() {
+    const { data: { postObj } } = this
+    router.push('addAccountUpdate', {}, res => {
+      res.eventChannel.emit('postDetailData', { data: postObj })
+    })
   }
 })
