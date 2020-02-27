@@ -6,15 +6,13 @@ cloud.init({
 
 const log = cloud.logger()
 const db = cloud.database()
-const userdModel = db.collection('user')
+const userModel = db.collection('user')
 
 exports.main = async () => {
   const { OPENID: _openid } = cloud.getWXContext()
   try {
-    await userdModel.where({ _openid }).remove()
+    await userModel.where({ _openid }).update({ data: { encryption: '' } })
     return { code: 0 }
-  } catch (error) {
-    log.error(error)
-  }
+  } catch (error) { log.error(error) }
   return { code: -1 }
 }
