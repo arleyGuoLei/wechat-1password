@@ -35,7 +35,7 @@
     <x-input id="password" placeholder="请输入" maxLength="32" tag="password" inputValue="{{password}}" bind:inputChange="onInputChange"></x-input>
     <view class="pwd-setting" catchtap="onPwdSetting">
       <image src="./../../images/account-setting.png" />
-      <text>规则偏好</text>
+      <text>生成规则</text>
     </view>
   </view>
 

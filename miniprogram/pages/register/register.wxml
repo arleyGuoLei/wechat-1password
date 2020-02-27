@@ -26,5 +26,5 @@
 
 <view class="tip">
   <image class="tip-img" src="./../../images/tip.png" />
-  <text class="tip-text">主密码用于解密数据，不可修改</text>
+  <text class="tip-text">主密码不明文存储，用于解密数据</text>
 </view>

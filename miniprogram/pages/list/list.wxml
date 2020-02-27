@@ -26,7 +26,8 @@
         </view>
         <view class="card-main__password" catchtap="onTapPwd" data-j="{{account.jPassword?true:false}}" data-index="{{index}}">
           <text class="password-title">密码：</text>
-          <text selectable="{{true}}" class="password-text over-ellipsis">{{account.jPassword?account.jPassword:'●●●●●●●●●●●●●'}}</text>
+          <text selectable="{{true}}" style="font-size: {{account.jPassword?'34rpx':'24rpx'}};" 
+            class="password-text over-ellipsis">{{account.jPassword?account.jPassword:'●●●●●●●●●'}}</text>
           <image class="card-header__show" src="./../../images/list-show.png" />
         </view>
       </view>

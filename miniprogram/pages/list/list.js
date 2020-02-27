@@ -2,7 +2,7 @@ import $ from './../../utils/tool'
 import router from './../../utils/router'
 import Password from './../../model/password'
 
-import { fingerCheck } from './../../utils/util'
+import { fingerCheck, throttle } from './../../utils/util'
 
 Page({
   data: {
@@ -95,7 +95,7 @@ Page({
     const { detail: { password } } = e
     this.showPassword(this._selectIndex, password)
   },
-  onTapPwd(e) {
+  onTapPwd: throttle(function(e) {
     const { currentTarget: { dataset: { index, j } } } = e
     if (!j) {
       this.onShowPwd(e)
@@ -103,6 +103,6 @@ Page({
       const key = `list[${index}].jPassword`
       this.setData({ [key]: '' })
     }
-  }
+  }, 1000)
 
 })

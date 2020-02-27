@@ -1,6 +1,6 @@
 import $ from './../../utils/tool'
 import router from './../../utils/router'
-import { fingerCheck } from './../../utils/util'
+import { fingerCheck, throttle } from './../../utils/util'
 import log from './../../utils/log'
 import PasswordDb from './../../model/password'
 
@@ -34,14 +34,14 @@ Page({
       })
     })
   },
-  onTapPwd(e) {
+  onTapPwd: throttle(function(e) {
     const { currentTarget: { dataset: { j } } } = e
     if (!j) {
       this.onShowPwd()
     } else {
       this.setData({ jPassword: '' })
     }
-  },
+  }, 1000),
   onShowPwd() {
     const mainKey = wx.getStorageSync('pwd')
     const encryption = $.store.get('encryption')

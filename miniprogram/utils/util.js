@@ -2,9 +2,15 @@ import $ from './tool'
 import log from './log'
 
 export function formatDate(date) {
-  const month = (date.getMonth() + 1).toString().padStart(2, '0')
-  const strDate = date.getDate().toString().padStart(2, '0')
-  return `${date.getFullYear()}-${month}-${strDate} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+  function padStr(obj) {
+    return obj.toString().padStart(2, '0')
+  }
+  const month = padStr(date.getMonth() + 1)
+  const strDate = padStr(date.getDate())
+  const hour = padStr(date.getHours())
+  const minute = padStr(date.getMinutes())
+  const second = padStr(date.getSeconds())
+  return `${date.getFullYear()}-${month}-${strDate} ${hour}:${minute}:${second}`
 }
 
 export function fingerCheck(challenge) {
@@ -39,4 +45,15 @@ export function fingerCheck(challenge) {
       }
     })
   })
+}
+
+export function throttle(fn, gapTime = 500) {
+  let _lastTime = null
+  return function() {
+    const _nowTime = +new Date()
+    if (_nowTime - _lastTime > gapTime || !_lastTime) {
+      fn.apply(this, arguments)
+      _lastTime = _nowTime
+    }
+  }
 }
