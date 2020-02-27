@@ -22,7 +22,6 @@ Page({
   }),
   addAccount() {
     const encryption = $.store.get('encryption')
-    console.log('log => : addAccount -> encryption', encryption)
     if (encryption === '') {
       router.push('register')
     } else {
