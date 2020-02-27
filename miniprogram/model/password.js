@@ -100,4 +100,12 @@ export default class extends Base {
       pageSum
     }
   }
+
+  async clear() {
+    const { result: { code } } = await $.callCloud({ name: 'clearAllPassword' })
+    if (code === 0) {
+      return true
+    }
+    return false
+  }
 }

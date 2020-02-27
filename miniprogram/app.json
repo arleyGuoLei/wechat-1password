@@ -4,7 +4,9 @@
     "pages/addAccount/addAccount",
     "pages/register/register",
     "pages/list/list",
-    "pages/accountDetail/accountDetail"
+    "pages/accountDetail/accountDetail",
+    "pages/mine/mine",
+    "pages/about/about"
   ],
   "window": {
     "backgroundColor": "#FFFFFF",
@@ -18,5 +20,8 @@
     "validatePwd": "/components/validatePwd/validatePwd"
   },
   "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": [
+    "wx18a2ac992306a5a4"
+  ],
   "style": "v2"
 }

@@ -36,4 +36,12 @@ export default class extends Base {
     }
     return false
   }
+
+  async clear() {
+    const { result: { code } } = await $.callCloud({ name: 'clearUser' })
+    if (code === 0) {
+      return true
+    }
+    return false
+  }
 }

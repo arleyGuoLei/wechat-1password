@@ -1,0 +1,41 @@
+<header>
+  <view class="header" slot="content">
+    <navigator open-type="navigateBack">
+      <image class="header-img" src="./../../images/back.png" />
+    </navigator>
+    <text class="header-title">偏好设置</text>
+  </view>
+</header>
+
+<view class="card">
+  <view class="card-line" catchtap="clearAccount">
+    <image class="line-icon" src="./../../images/mine-clear.png" />
+    <button class="line-btn" hover-class="btn-hover">清空账号数据</button>
+    <image class="line-right" src="./../../images/mine-right.png" />
+  </view>
+  <view class="card-line">
+    <image class="line-icon" src="./../../images/mine-advice.png" />
+    <button class="line-btn" open-type="feedback" hover-class="btn-hover">意见反馈</button>
+    <image class="line-right" src="./../../images/mine-right.png" />
+  </view>
+  <view class="card-line" catchtap="onZan">
+    <image class="line-icon" src="./../../images/mine-zan.png" />
+    <button class="line-btn" hover-class="btn-hover">赞赏支持</button>
+    <image class="line-right" src="./../../images/mine-right.png" />
+  </view>
+  <view class="card-line" catchtap="onGithub">
+    <image class="line-icon" src="./../../images/mine-github.png" />
+    <button class="line-btn" hover-class="btn-hover">Github开源地址</button>
+    <image class="line-right" src="./../../images/mine-right.png" />
+  </view>
+  <view class="card-line">
+    <image class="line-icon" src="./../../images/mine-share.png" />
+    <button open-type="share" class="line-btn" hover-class="btn-hover">分享给好友</button>
+    <image class="line-right" src="./../../images/mine-right.png" />
+  </view>
+  <view class="card-line" catchtap="onAbout">
+    <image class="line-icon" src="./../../images/mine-about.png" />
+    <button class="line-btn" hover-class="btn-hover">关于『有本密码』</button>
+    <image class="line-right" src="./../../images/mine-right.png" />
+  </view>
+</view>

@@ -30,5 +30,15 @@ Page({
   },
   routerList() {
     router.push('list')
+  },
+  routerMine() {
+    router.push('mine')
+  },
+  onShareAppMessage() {
+    return {
+      title: '我在这里记密码，安全简洁，支持指纹验证 ~',
+      path: '/pages/home/home',
+      imageUrl: './../../images/share-bg.png'
+    }
   }
 })

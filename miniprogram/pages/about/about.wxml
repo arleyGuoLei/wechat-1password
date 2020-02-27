@@ -1,0 +1,24 @@
+<header>
+  <view class="header" slot="content">
+    <navigator open-type="navigateBack">
+      <image class="header-img" src="./../../images/back.png" />
+    </navigator>
+    <text class="header-title">关于</text>
+  </view>
+</header>
+
+<view class="card">
+  <text class="card-title">关于『有本密码』小程序</text>
+  <view class="card-detail">
+    <text class="title">安全解析</text>
+    <text class="desc">1. 主密码：首次进入小程序添加密码，需要设置主密码，主密码使用SHA-256摘要算法存储于服务器。</text>
+    <text class="desc">2. 服务端账号密码存储使用AES对称加密方式进行加密，主密码为加密密码，请勿遗忘主密码，遗忘了无法解密。</text>
+    <text class="desc">3. 数据均存储至微信小程序云开发数据库，数据安全保障，不丢不盗!</text>
+  </view>
+  <view class="card-detail">
+    <text class="title">关于项目</text>
+    <text class="desc">1. 作者微信: arley_GuoLei</text>
+    <text class="desc">2. 此项目开源于Github，欢迎贡献代码和赞赏Star!</text>
+    <text class="desc">3. 转载使用小程序代码二次开发，请进行标注，谢谢!</text>
+  </view>
+</view>

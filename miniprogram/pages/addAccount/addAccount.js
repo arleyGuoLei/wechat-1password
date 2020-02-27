@@ -33,6 +33,7 @@ Page({
   onLoad(options) {
     const { update = false } = options
     if (update) {
+      $.loading()
       const that = this
       const eventChannel = this.getOpenerEventChannel()
       eventChannel.on('postDetailData', function({ data }) {
@@ -42,6 +43,7 @@ Page({
             [key]: key === 'password' ? '' : data[key]
           })
         })
+        $.hideLoading()
       })
     }
   },

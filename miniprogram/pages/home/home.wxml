@@ -9,7 +9,7 @@
 
 <view class="search">
   <image class="search-car animated infinite slower car-run" src="./../../images/home-car.png" />
-  <input class="search-text" type="text" value="{{keywords}}" placeholder="要找什么账号的密码？" placeholder-class="search-text__search-text" bindinput="onInput" />
+  <input class="search-text" confirm-type="search" type="text" value="{{keywords}}" placeholder="要找什么账号的密码？" placeholder-class="search-text__search-text" bindinput="onInput" bindconfirm="onSearch" />
   <view class="search-button" catchtap="onSearch">
     <image class="search-button__img" src="./../../images/home-search.png" />
   </view>
@@ -27,7 +27,7 @@
 </view>
 
 
-  <view class="btn-setting">
+  <view class="btn-setting" catchtap="routerMine">
     <image src="./../../images/home-setting.png" class="btn-setting__img" />
     <text class="btn-setting__text">偏好设置</text>
   </view>

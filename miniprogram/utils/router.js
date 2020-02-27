@@ -5,7 +5,9 @@ const pages = {
   register: '/pages/register/register',
   list: '/pages/list/list',
   listSearch: '/pages/list/list?search=true',
-  accountDetail: '/pages/accountDetail/accountDetail'
+  accountDetail: '/pages/accountDetail/accountDetail',
+  mine: '/pages/mine/mine',
+  about: '/pages/about/about'
 }
 
 export default {

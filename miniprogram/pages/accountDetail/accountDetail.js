@@ -23,6 +23,7 @@ Page({
     postObj: null
   },
   onLoad() {
+    $.loading()
     const that = this
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('postDetailData', function({ data }) {
@@ -32,6 +33,7 @@ Page({
           [key]: data[key]
         })
       })
+      $.hideLoading()
     })
   },
   onTapPwd: throttle(function(e) {
