@@ -17,7 +17,8 @@
   "usingComponents": {
     "header": "/components/header/header",
     "x-input": "/components/input/input",
-    "validatePwd": "/components/validatePwd/validatePwd"
+    "validatePwd": "/components/validatePwd/validatePwd",
+    "addtips": "/components/home-add-tips/index"
   },
   "sitemapLocation": "sitemap.json",
   "navigateToMiniProgramAppIdList": [

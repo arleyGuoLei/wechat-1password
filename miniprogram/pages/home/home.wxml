@@ -4,7 +4,7 @@
     <view class="header-nick over-ellipsis animated fadeIn slow"><open-data default-text="我(loading...)" type="userNickName"></open-data>的密码本</view>
   </view>
 </header>
-
+<addtips></addtips>
 <image class="logo" src="./../../images/home-logo.png" />
 
 <view class="search">
