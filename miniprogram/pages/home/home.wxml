@@ -9,8 +9,8 @@
 
 <view class="search">
   <image class="search-car animated infinite slower car-run" src="./../../images/home-car.png" />
-  <input class="search-text" type="text" placeholder="要找什么账号的密码？" placeholder-class="search-text__search-text" />
-  <view class="search-button">
+  <input class="search-text" type="text" value="{{keywords}}" placeholder="要找什么账号的密码？" placeholder-class="search-text__search-text" bindinput="onInput" />
+  <view class="search-button" catchtap="onSearch">
     <image class="search-button__img" src="./../../images/home-search.png" />
   </view>
 </view>

@@ -3,7 +3,7 @@
     <navigator open-type="navigateBack">
       <image class="header-img" src="./../../images/back.png" />
     </navigator>
-    <text class="header-title">{{title}}</text>
+    <text class="header-title over-ellipsis">{{title}}</text>
   </view>
 </header>
 

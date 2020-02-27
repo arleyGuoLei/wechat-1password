@@ -24,6 +24,8 @@ page {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  width: 400rpx;
+  text-align: center;
 }
 
 /* card */

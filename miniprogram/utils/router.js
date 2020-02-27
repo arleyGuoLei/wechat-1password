@@ -4,6 +4,7 @@ const pages = {
   addAccountUpdate: '/pages/addAccount/addAccount?update=true',
   register: '/pages/register/register',
   list: '/pages/list/list',
+  listSearch: '/pages/list/list?search=true',
   accountDetail: '/pages/accountDetail/accountDetail'
 }
 

@@ -13,30 +13,52 @@ Page({
     list: [],
     type: 'all', // [all, search]
     onBottom: false, // 到底了
-    validatePwdShow: false
+    validatePwdShow: false,
+    keywords: ''
   },
-  onLoad() {
-    this.getData()
+  onLoad(options) {
+    const { search = false } = options
+    if (search) {
+      $.loading()
+      const that = this
+      const eventChannel = this.getOpenerEventChannel()
+      eventChannel.on('postKeywords', function({ keywords }) {
+        $.hideLoading()
+        that.setData({ keywords, title: `搜索:${keywords}`, type: 'search' })
+        that.getDataList(1, keywords)
+      })
+    } else {
+      this.getDataList(1)
+    }
   },
   onReachBottom() {
-    const { data: { page, pageSum } } = this
-    if (page < pageSum) { this.getData(page + 1) }
+    const { data: { page, pageSum, keywords } } = this
+    if (page < pageSum) { this.getDataList(page + 1, keywords) }
   },
-  async getData(page = 1) {
+  async getDataList(page = 1, keywords = '') {
     $.loading()
-    const password = new Password()
-    const { list, pageSum } = await password.getList(page)
-    let { data: { list: localList, pageSum: localPageSum } } = this
+    let { data: { list: localList, pageSum: localPageSum, type } } = this
+    const { list, pageSum } = await this.getData(type, page, keywords)
     if (pageSum !== -1) { localPageSum = pageSum }
     if (page === 1) { localList = list } else { localList = localList.concat(list) }
     if (page === localPageSum) { this.setData({ onBottom: true }) }
-
     this.setData({ list: localList, pageSum: localPageSum, page })
     $.hideLoading()
+  },
+  async getData(type, page, keywords) {
+    let data = null
+    const password = new Password()
+    if (type === 'all') {
+      data = await password.getList(page)
+    } else {
+      data = await password.search(keywords, page)
+    }
+    return data
   },
   onMenu(e) {
     const { currentTarget: { dataset: { index } } } = e
     const { data: { list } } = this
+    const that = this
     wx.showActionSheet({
       itemList: ['详情', '修改', '删除'],
       success(res) {
@@ -48,6 +70,29 @@ Page({
         if (res.tapIndex === 1) {
           router.push('addAccountUpdate', {}, res => {
             res.eventChannel.emit('postDetailData', { data: list[index] })
+          })
+        }
+
+        if (res.tapIndex === 2) {
+          wx.showModal({
+            title: '提示',
+            content: '请确认删除？',
+            confirmText: '删除',
+            confirmColor: '#e64340',
+            async success(res) {
+              if (res.confirm) {
+                const passwordModel = new Password()
+                const res = await passwordModel.delete(list[index]._id)
+                if (res) {
+                  list.splice(index, 1)
+                  that.setData({ list })
+                } else {
+                  $.tip('删除失败, 请重试 ~')
+                }
+              } else if (res.cancel) {
+                $.tip('取消删除')
+              }
+            }
           })
         }
       },

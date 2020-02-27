@@ -82,5 +82,28 @@ Page({
     router.push('addAccountUpdate', {}, res => {
       res.eventChannel.emit('postDetailData', { data: postObj })
     })
+  },
+  onDelete() {
+    const { data: { _id } } = this
+    wx.showModal({
+      title: '提示',
+      content: '请确认删除？',
+      confirmText: '删除',
+      confirmColor: '#e64340',
+      async success(res) {
+        if (res.confirm) {
+          const passwordModel = new PasswordDb()
+          const res = await passwordModel.delete(_id)
+          if (res) {
+            await $.tip('删除成功', 1000)
+            router.reLaunch()
+          } else {
+            $.tip('删除失败, 请重试 ~')
+          }
+        } else if (res.cancel) {
+          $.tip('取消删除')
+        }
+      }
+    })
   }
 })

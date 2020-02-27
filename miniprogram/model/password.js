@@ -59,4 +59,44 @@ export default class extends Base {
       data: { _id }
     }, false)
   }
+
+  async delete(_id) {
+    const { stats: { removed = -1 } } = await this.db.doc(_id).remove()
+    if (removed === 1) {
+      return true
+    }
+    return false
+  }
+
+  async search(keywords, page = 1) {
+    const key = '(' + keywords.trim().replace(/[(){}.*?:$+-]|[=^!|]/ig, `\\$&`).split(/\s+/).join('|') + ')'
+
+    const condition = new RegExp(`${key}`, 'ig')
+
+    const or = this._.or(['title', 'account', 'desc', 'mail', 'phone', 'platform'].map(item => {
+      return {
+        [item]: condition
+      }
+    }))
+
+    const size = 10
+    const { data } = await this.db.where({ _openid: '{openid}', or }).skip((page - 1) * size).limit(size).orderBy('times', 'desc').orderBy('updateTime', 'desc').get()
+
+    const list = data.map(item => {
+      return {
+        ...item,
+        updateTime: formatDate(item.updateTime),
+        createTime: formatDate(item.createTime)
+      }
+    })
+    let pageSum = -1
+    if (page === 1) {
+      const { total } = await this.db.where({ _openid: '{openid}', or }).count()
+      pageSum = Math.ceil(total / size)
+    }
+    return {
+      list,
+      pageSum
+    }
+  }
 }
