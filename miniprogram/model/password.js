@@ -78,9 +78,9 @@ export default class extends Base {
         [item]: condition
       }
     }))
-
+    // { _openid: '{openid}', or }
     const size = 10
-    const { data } = await this.db.where({ _openid: '{openid}', or }).skip((page - 1) * size).limit(size).orderBy('times', 'desc').orderBy('updateTime', 'desc').get()
+    const { data } = await this.db.where(or).skip((page - 1) * size).limit(size).orderBy('times', 'desc').orderBy('updateTime', 'desc').get()
 
     const list = data.map(item => {
       return {
@@ -91,7 +91,8 @@ export default class extends Base {
     })
     let pageSum = -1
     if (page === 1) {
-      const { total } = await this.db.where({ _openid: '{openid}', or }).count()
+      // { _openid: '{openid}', or }
+      const { total } = await this.db.where(or).count()
       pageSum = Math.ceil(total / size)
     }
     return {
