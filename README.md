@@ -329,6 +329,25 @@ const encryption = $.store.get('encryption')
   },
 ```
 
+## 高级模糊搜索
+
+搜索引擎的搜索，会将空格替换为或的条件，实现检索更多的数据，我们也实现一下
+
+```js
+// password.js => search节选
+
+// keywords 为用户输入的关键词
+const key = '(' + keywords.trim().replace(/[(){}.*?:$+-]|[=^!|]/ig, `\\$&`).split(/\s+/).join('|') + ')'// 将空白字符切开 生成正则或 替换用户输入的正则特殊符号
+
+const condition = new RegExp(`${key}`, 'ig')
+
+const or = this._.or(['title', 'account', 'desc', 'mail', 'phone', 'platform'].map(item => { // 将需要模糊搜索的字段生成云开发的or条件
+  return {
+    [item]: condition
+  }
+}))
+```
+
 
 ## 其他小程序坑点解析
 

@@ -5,7 +5,7 @@
     placeholder="" 
     value="{{inputValue}}" 
     maxlength="{{maxLength}}" 
-    bindinput="inputContent"
+    bindinput="onInput"
     cursor-spacing="{{cursorSpacing}}"
     password="{{isPassword}}"
     focus="{{autoFocus}}"

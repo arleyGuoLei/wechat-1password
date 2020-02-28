@@ -24,13 +24,30 @@ export function fingerCheck(challenge) {
             requestAuthModes: ['fingerPrint'],
             challenge,
             authContent: '请验证指纹',
-            success(res) {
-              const { errCode = -1 } = res
+            async success(res) {
+              const { errCode = -1, jsonString, jsonSignature } = res
               if (errCode === 0) {
-                return resolve(true) // 有指纹并且验证成功
+                const { result: { errCode = -1 } } = await $.callCloud({ // 服务端验证指纹
+                  name: 'verifySignature',
+                  data: {
+                    jsonString,
+                    jsonSignature
+                  }
+                })
+                if (errCode === 0) {
+                  return resolve(true) // 有指纹并且验证成功
+                }
+                return reject(new Error('服务端验证失败'))
               } else {
                 $.tip('指纹验证失败, 请重试')
                 return reject(new Error('指纹验证失败'))
+              }
+            },
+            fail(e) {
+              const { errCode } = e
+              if (errCode === 90010) {
+                $.tip('指纹验证多次失败, 请输入主密码', 1200)
+                return reject(new Error('验证失败太多次, 稍后重试'))
               }
             }
           })
@@ -39,6 +56,7 @@ export function fingerCheck(challenge) {
         }
       },
       fail(e) {
+        console.log('log => : fail -> e', e)
         $.tip('无指纹验证')
         log.error(e)
         return reject(e)

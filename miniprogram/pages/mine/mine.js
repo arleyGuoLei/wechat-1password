@@ -60,7 +60,7 @@ Page({
             $.tip('清空失败, 请重试!')
           }
         } else if (res.cancel) {
-          $.tip('取消删除')
+          $.tip('取消清空')
         }
       }
     })

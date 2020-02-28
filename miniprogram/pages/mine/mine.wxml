@@ -29,7 +29,7 @@
     <image class="line-right" src="./../../images/mine-right.png" />
   </view>
   <view class="card-line">
-    <image class="line-icon" src="./../../images/mine-share.png" />
+    <image class="line-icon" style="height:30rpx;" src="./../../images/mine-share.png" />
     <button open-type="share" class="line-btn" hover-class="btn-hover">分享给好友</button>
     <image class="line-right" src="./../../images/mine-right.png" />
   </view>

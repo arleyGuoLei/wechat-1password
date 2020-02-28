@@ -33,7 +33,7 @@ Component({
     placeholderValue: ''
   },
   methods: {
-    inputContent(e) {
+    onInput(e) {
       const { detail: { value } } = e
       const { properties: { tag } } = this
       this.triggerEvent('inputChange', { value, tag })

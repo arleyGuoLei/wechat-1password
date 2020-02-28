@@ -1,6 +1,7 @@
 import $ from './../../utils/tool'
 import router from './../../utils/router'
 import Password from './../../model/password'
+import log from './../../utils/log'
 
 import { fingerCheck, throttle } from './../../utils/util'
 
@@ -122,7 +123,7 @@ Page({
     const mainKey = wx.getStorageSync('pwd')
     const encryption = $.store.get('encryption')
     if ($.digest(mainKey) === encryption) { // 本地主密码是正确的
-      fingerCheck(mainKey).then((state) => {
+      fingerCheck(encryption + Date.now()).then((state) => {
         if (state) {
           this.showPassword(index, mainKey)
         } else {
@@ -130,6 +131,7 @@ Page({
         }
       }).catch(e => {
         this.setData({ validatePwdShow: true })
+        log.error({ msg: e.message })
       })
     } else { // 接口调用失败
       console.log('接口调用失败')
