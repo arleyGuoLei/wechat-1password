@@ -284,12 +284,8 @@ for (let i = 0; i < passwordLen; i++) { // 从上方数组中根据用户选择�
     const mainKey = wx.getStorageSync('pwd')
     const encryption = $.store.get('encryption')
     if ($.digest(mainKey) === encryption) { // 通过相同的SHA256算法判断 本地主密码是正确的
-      fingerCheck(mainKey).then((state) => {
-        if (state) {
-          this.showPassword(mainKey)
-        } else {
-          throw new Error('没有指纹解锁')
-        }
+      fingerCheck(mainKey).then(() => {
+        this.showPassword(mainKey)
       }).catch(e => {
         this.setData({ validatePwdShow: true }) // 弹框让用户输入主密码进行验证
         log.error(e)
@@ -310,7 +306,7 @@ const encryption = $.store.get('encryption')
     $.tip('主密码错误')
     this.setData({ password: '' })
     const inputComponent = this.selectComponent('#password')
-    inputComponent.inputContent({ detail: { value: '' } })
+    inputComponent.onInput({ detail: { value: '' } })
     return false
   }
 ```

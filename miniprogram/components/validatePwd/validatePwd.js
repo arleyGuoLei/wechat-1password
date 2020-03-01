@@ -34,7 +34,7 @@ Component({
         $.tip('主密码错误')
         this.setData({ password: '' })
         const inputComponent = this.selectComponent('#password')
-        inputComponent.inputContent({ detail: { value: '' } })
+        inputComponent.onInput({ detail: { value: '' } })
         return false
       }
       this.triggerEvent('validateSuccess', { password })

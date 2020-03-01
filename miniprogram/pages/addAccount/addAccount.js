@@ -99,7 +99,7 @@ Page({
     }
     this.setData({ password: str })
     const inputComponent = this.selectComponent('#password')
-    inputComponent.inputContent({ detail: { value: str } })
+    inputComponent.onInput({ detail: { value: str } })
     wx.setClipboardData({ data: str })
   },
   onUserTitleBlur(e) {

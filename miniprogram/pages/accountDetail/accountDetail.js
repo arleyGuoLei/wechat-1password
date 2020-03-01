@@ -43,17 +43,13 @@ Page({
     } else {
       this.setData({ jPassword: '' })
     }
-  }, 1000),
+  }, 1800),
   onShowPwd() {
     const mainKey = wx.getStorageSync('pwd')
     const encryption = $.store.get('encryption')
     if ($.digest(mainKey) === encryption) { // 本地主密码是正确的
-      fingerCheck(mainKey).then((state) => {
-        if (state) {
-          this.showPassword(mainKey)
-        } else {
-          throw new Error('没有指纹解锁')
-        }
+      fingerCheck(mainKey).then(() => {
+        this.showPassword(mainKey)
       }).catch(e => {
         this.setData({ validatePwdShow: true })
         log.error(e)

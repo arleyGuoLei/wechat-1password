@@ -40,12 +40,11 @@ Page({
     if (!checked) { return $.tip('请勾选已了解') }
     if (/[\u4e00-\u9fa5]/.test(pwd)) { return $.tip('密码不能含有中文') }
     fingerCheck(pwd)
-    .then(() => {
-      this.update(pwd)
-    }).catch(e => {      
-      const envVersion = __wxConfig.envVersion
-      if (envVersion === 'develop') { this.update(pwd) }
-      else $.tip('不支持生物验证')
-    })
+      .then(() => {
+        this.update(pwd)
+      }).catch(e => {
+        const envVersion = __wxConfig.envVersion
+        if (envVersion === 'develop') { this.update(pwd) } else $.tip('不支持生物验证')
+      })
   }
 })

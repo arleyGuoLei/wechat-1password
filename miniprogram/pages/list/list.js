@@ -123,12 +123,8 @@ Page({
     const mainKey = wx.getStorageSync('pwd')
     const encryption = $.store.get('encryption')
     if ($.digest(mainKey) === encryption) { // 本地主密码是正确的
-      fingerCheck(encryption + Date.now()).then((state) => {
-        if (state) {
-          this.showPassword(index, mainKey)
-        } else {
-          throw new Error('没有指纹解锁')
-        }
+      fingerCheck(encryption + Date.now()).then(() => {
+        this.showPassword(index, mainKey)
       }).catch(e => {
         this.setData({ validatePwdShow: true })
         log.error({ msg: e.message })
@@ -150,6 +146,6 @@ Page({
       const key = `list[${index}].jPassword`
       this.setData({ [key]: '' })
     }
-  }, 1000)
+  }, 1800)
 
 })
