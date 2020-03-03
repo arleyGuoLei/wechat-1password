@@ -24,7 +24,7 @@ Component({
   data: {
     SHOW_TOP: false,
     SHOW_MODAL: false,
-    top: $.app.globalData.CustomBar - $.app.globalData.StatusBar + 10
+    top: $.app.globalData.CustomBar - 10
   },
 
   ready: function() {

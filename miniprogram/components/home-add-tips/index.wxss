@@ -17,7 +17,7 @@ page {
   width: 0;
   height: 0;
   margin-right: 120rpx;
-  border-width: 20rpx;
+  border-width: 10px;
   border-style: solid;
   border-color:  transparent transparent var(--theme-color) transparent;
 }
