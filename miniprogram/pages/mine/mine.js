@@ -31,10 +31,8 @@ Page({
     })
   },
   onZan() {
-    wx.navigateToMiniProgram({
-      appId: 'wx18a2ac992306a5a4',
-      path: 'pages/apps/largess/detail?id=k%2BiHXlLOuLA%3D',
-      extraData: {}
+    wx.previewImage({
+      urls: ['https://7077-pwd-prod-1301366756.tcb.qcloud.la/admire.jpg']
     })
   },
   clearAccount() {

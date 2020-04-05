@@ -442,6 +442,6 @@ export default class extends Base { // 继承上面的base
 
 ## 赞赏作者
 
-微信扫码，不支持支付宝赞赏！
+微信扫码赞赏作者 ❤ ~
 
-![赞赏码](https://user-gold-cdn.xitu.io/2020/2/27/17087517adad1653?w=1360&h=1360&f=png&s=318736)
+![赞赏码](./admire.jpg)
