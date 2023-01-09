@@ -11,7 +11,7 @@
 
 UI用sketch画的，通过蓝湖插件上传到了[蓝湖](https://lanhuapp.com/url/LUcSI-CdVms), 设计图链接有效期为14天,如果过期了可以联系我要新的链接。
 
-最终项目预览：![扫码](https://user-gold-cdn.xitu.io/2020/2/27/170871ac3d8c673f?w=258&h=258&f=jpeg&s=43247)
+最终项目预览：![扫码](https://raw.githubusercontent.com/sai1024/resource_share/master/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%BA%8C%E7%BB%B4%E7%A0%81.jpg)
 
 对于sketch，在此推荐几个插件，前端工程师也能做大师级UI
 
@@ -19,13 +19,11 @@ UI用sketch画的，通过蓝湖插件上传到了[蓝湖](https://lanhuapp.com/
 - [kitchen](https://oursketch.com/plugin/kitchen): 填充图标，数据等功能蛮好用的
 
 
-![首页](https://user-gold-cdn.xitu.io/2020/2/27/1708715278952e61?w=2297&h=3288&f=png&s=575836)
-![设置主密码](https://user-gold-cdn.xitu.io/2020/2/27/170871638cf3ab19?w=2297&h=3288&f=png&s=352148)
-![主密码设置-验证](https://user-gold-cdn.xitu.io/2020/2/27/1708715e6923b22c?w=2297&h=3288&f=png&s=386191)
-![记个密码](https://user-gold-cdn.xitu.io/2020/2/27/1708715b019b2aef?w=2297&h=3288&f=png&s=517045)
-![查看数据](https://user-gold-cdn.xitu.io/2020/2/27/17087156ea1a8904?w=2297&h=3288&f=png&s=414632)
-![数据详情](https://user-gold-cdn.xitu.io/2020/2/27/1708717ac5860732?w=2297&h=3288&f=png&s=612761)
-![偏好设置](https://user-gold-cdn.xitu.io/2020/2/27/170871718d0d63aa?w=2297&h=3288&f=png&s=465585)
+![首页](https://raw.githubusercontent.com/sai1024/resource_share/master/%E9%A6%96%E9%A1%B5.png)
+![设置主密码](https://raw.githubusercontent.com/sai1024/resource_share/master/%E8%AE%BE%E7%BD%AE%E4%B8%BB%E5%AF%86%E7%A0%81.png)
+![记个密码](https://raw.githubusercontent.com/sai1024/resource_share/master/%E8%AE%B0%E5%BD%95%E5%AF%86%E7%A0%81.png)
+![检索记录的密码信息](https://raw.githubusercontent.com/sai1024/resource_share/master/%E6%A3%80%E7%B4%A2%E8%AE%B0%E5%BD%95%E7%9A%84%E5%AF%86%E7%A0%81%E4%BF%A1%E6%81%AF.png)
+![偏好设置](https://raw.githubusercontent.com/sai1024/resource_share/master/%E5%81%8F%E5%A5%BD%E8%AE%BE%E7%BD%AE.png)
 
 
 
